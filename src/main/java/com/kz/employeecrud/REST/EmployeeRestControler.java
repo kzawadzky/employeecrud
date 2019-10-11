@@ -2,6 +2,7 @@ package com.kz.employeecrud.REST;
 
 import com.kz.employeecrud.DAO.EmployeeDAO;
 import com.kz.employeecrud.entity.Employee;
+import com.kz.employeecrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,16 +14,16 @@ import java.util.List;
 @RequestMapping("/api")
 public class EmployeeRestControler {
 
-    private EmployeeDAO employeeDAO;
+    private EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRestControler (EmployeeDAO theEmployeeDAO) {
-        employeeDAO = theEmployeeDAO;
+    public EmployeeRestControler (EmployeeService theEmployeeService) {
+        employeeService = theEmployeeService;
     }
 
     @GetMapping("/employees")
     public List<Employee> findAll(){
-        return employeeDAO.findAll();
+        return employeeService.findAll();
     }
 
 
